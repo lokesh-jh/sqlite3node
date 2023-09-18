@@ -1,0 +1,11 @@
+<%- include("includes/head.ejs")%> <%- include("includes/navigation.ejs")%>
+<main>
+  <div>
+    <% for (let user of userlist){ %>
+  <div><%= user.dataValues.username %></div>
+  <div><%= user.dataValues.email %></div>
+  <div><%= user.dataValues.password %></div>
+  <% } %>
+  </div>
+</main>
+<%- include("includes/footer.ejs")%>

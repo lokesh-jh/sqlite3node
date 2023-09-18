@@ -1,0 +1,11 @@
+<%- include("includes/head.ejs")%> <%- include("includes/navigation.ejs")%>
+
+<main class="container m-auto">
+  <h1 class="text-6xl">Add user</h1>
+  <form action="/admin/adduser" method="POST">
+    <input type="text" name="username" class="bg-slate-200 border-2 border-slate-800"/>
+    <button type="submit">Add User</button>
+  </form>
+</main>
+
+<%- include("includes/footer.ejs")%>

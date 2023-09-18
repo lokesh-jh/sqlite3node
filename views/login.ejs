@@ -1,0 +1,12 @@
+<%- include("includes/head.ejs")%> <%- include("includes/navigation.ejs")%>
+
+<main class="container m-auto">
+  <h1 class="text-6xl">Login</h1>
+  <form action="/login" method="POST">
+    <input type="text" name="username" class="bg-slate-200 border-2 border-slate-800"/>    
+    <input type="password" name="password" class="bg-slate-200 border-2 border-slate-800"/>
+    <button type="submit">Login</button>
+  </form>
+</main>
+
+<%- include("includes/footer.ejs")%>
