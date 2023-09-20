@@ -1,9 +1,11 @@
 const User = require("../models/user");
+const flash = require('express-flash');
 const bcrypt = require("bcryptjs");
 const { validationResult } = require("express-validator");
 
 exports.getRegister = (req, res) => {
-  res.render("register", { msg: "" });
+  
+  res.render("register", { msg: "", authStatus});
 };
 
 exports.postRegister = async (req, res) => {
@@ -27,8 +29,7 @@ exports.postRegister = async (req, res) => {
     console.log(err);
   }
 
-  try {
-    console.log("reached here");
+  try {    
     await User.create(req.body);
     res.redirect("/");
   } catch (err) {
@@ -36,7 +37,15 @@ exports.postRegister = async (req, res) => {
   }
 };
 
-exports.getLogin = (req, res) => {
-  res.render("login");
+exports.getLogin = (req, res) => {  
+  if(!req.session.messages){
+    console.log("logged out")
+    const message= ["you have been logged out"];
+  } else{
+       
+        console.log(req.session.messages);
+  }
+ 
+  res.render("login",{message:[]});
 };
 
