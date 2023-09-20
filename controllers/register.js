@@ -5,7 +5,7 @@ const { validationResult } = require("express-validator");
 
 exports.getRegister = (req, res) => {
   
-  res.render("register", { msg: "", authStatus});
+  res.render("register", { msg: ""});
 };
 
 exports.postRegister = async (req, res) => {
