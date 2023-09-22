@@ -10,6 +10,7 @@ const bodyParser = require("body-parser");
 const adminRoutes = require("./routes/admin");
 const registerRoutes = require("./routes/login");
 const pagesRoutes = require("./routes/pages");
+//const userRoutes = require("./routes/user");
 
 //view engines
 app.set("view engine", "ejs");
@@ -73,8 +74,12 @@ function isAuthenticated(req, res, next) {
 }
 
 // routing
+app.get("/",function (req, res) {    
+  res.render("home");
+} )
 app.use(pagesRoutes);
 app.use("/admin", isAuthenticated,adminRoutes);
+app.use(isAuthenticated,userRoutes);
 app.use(registerRoutes);
 app.post(
   "/login",
@@ -83,23 +88,18 @@ app.post(
     res.redirect("/profile");
   }
 );
-app.get(
-  "/profile",  
-  isAuthenticated,
-  function (req, res) {
-    
-    res.render("profile");
+exports.getLogin = (req, res) => {  
+  if(!req.session.messages){
+    //console.log("logged out")
+    const message= ["you have been logged out"];
+  } else{
+       
+        console.log(req.session.messages);
   }
-);
+ 
+  res.render("login",{message:[]});
+};
 
-app.get("/logout", (req, res) => {
-  req.logout(function (err) {
-    if (err) {
-      return next(err);
-    }
-  }); // Passport.js method to log the user out
-  res.redirect("/login"); // Redirect to the login page
-});
 
 // page not found
 app.use((req, res) => {

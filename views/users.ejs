@@ -1,11 +1,32 @@
 <%- include("includes/head.ejs")%> <%- include("includes/navigation.ejs")%>
-<main>
-  <div>
-    <% for (let user of userlist){ %>
-  <div><%= user.dataValues.username %></div>
-  <div><%= user.dataValues.email %></div>
-  <div><%= user.dataValues.password %></div>
-  <% } %>
+<main class="mx-auto w-3/4">
+  <h1 class="text-4xl m-6">All Users</h1>
+  <div class="overflow-x-auto">
+    <table class="table table-zebra">
+      <!-- head -->
+      <thead>
+        <tr>
+          <th></th>
+          <th>Name</th>
+          <th>email</th>
+          <th>Password</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% for (let user of userlist){ %>
+        <tr>
+          <th>1</th>
+          <td><%= user.dataValues.name %></td>
+          <td><%= user.dataValues.username %></td>
+          <td><%= user.dataValues.password %></td>
+        </tr> 
+        <% } %>     
+      </tbody>
+    </table>
   </div>
 </main>
+
+
+
+
 <%- include("includes/footer.ejs")%>

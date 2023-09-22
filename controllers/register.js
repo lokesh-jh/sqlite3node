@@ -37,15 +37,4 @@ exports.postRegister = async (req, res) => {
   }
 };
 
-exports.getLogin = (req, res) => {  
-  if(!req.session.messages){
-    console.log("logged out")
-    const message= ["you have been logged out"];
-  } else{
-       
-        console.log(req.session.messages);
-  }
- 
-  res.render("login",{message:[]});
-};
 

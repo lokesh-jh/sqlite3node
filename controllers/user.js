@@ -14,3 +14,16 @@ exports.postAddUser = async (req, res) => {
   await User.create(req.body);
   res.send("user added");
 };
+
+exports.getProfile = (req, res) =>{      
+  res.render("profile");
+}
+
+exports.getLogout = (req, res) => {
+  req.logout(function (err) {
+    if (err) {
+      return next(err);
+    }
+  }); // Passport.js method to log the user out
+  res.redirect("/login"); // Redirect to the login page
+}

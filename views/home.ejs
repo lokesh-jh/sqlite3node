@@ -1,5 +1,22 @@
 <%- include("includes/head.ejs")%> <%- include("includes/navigation.ejs")%>
-<main>
-  <h1 class="text-4xl"><%= homeContent %></h1>
+<main class="mx-auto w-3/4 mt-4 ">
+  <h1 class="text-4xl mb-8">Home Page</h1>
+  <div>
+    <div class="card w-96 bg-base-100 shadow-xl border-gray-800 border">
+      <figure><img src="/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" /></figure>
+      <div class="card-body">
+        <h2 class="card-title">
+          New Book
+          <div class="badge badge-secondary">NEW</div>
+        </h2>
+        <p>Author</p>
+        <p>Publish Date</p>
+        <div class="card-actions justify-end">
+          <div class="badge badge-outline">Fashion</div> 
+          <div class="badge badge-outline">Products</div>
+        </div>
+      </div>
+    </div>
+  </div>
 </main>
 <%- include("includes/footer.ejs")%>
