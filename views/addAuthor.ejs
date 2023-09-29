@@ -1,0 +1,12 @@
+<%- include("includes/head.ejs")%> <%- include("includes/navigation.ejs")%>
+
+<main class="container m-auto">
+  <h1 class="text-6xl">Add Author</h1>
+  <form action="/admin/addAuthor" method="POST">
+    <input type="text" name="name" placeholder="name"/>
+    <input type="text" name="address" placeholder="address"/>
+    <button type="submit">Add Author</button>
+  </form>
+</main>
+
+<%- include("includes/footer.ejs")%>

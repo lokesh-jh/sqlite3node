@@ -1,0 +1,11 @@
+<%- include("includes/head.ejs")%> <%- include("includes/navigation.ejs")%>
+
+<main class="container m-auto">
+  <h1 class="text-6xl">Add Genre</h1>
+  <form action="/admin/addGenre" method="POST">
+    <input type="text" name="genre" placeholder="genre"/>
+    <button type="submit">Add Genre</button>
+  </form>
+</main>
+
+<%- include("includes/footer.ejs")%>

@@ -1,12 +1,12 @@
 <%- include("includes/head.ejs")%> <%- include("includes/navigation.ejs")%>
 <main class="mx-auto w-3/4">
-  <h1 class="text-4xl m-6">All Users</h1>
+  <h1 class="text-4xl m-6">All Authors</h1>
   <div class="overflow-x-auto">
     <table class="table table-zebra">
       <!-- head -->
       <thead>
         <tr>
-          <th>S.No</th>
+          <th></th>
           <th>Name</th>
           <th>email</th>
           <th>Password</th>
@@ -21,8 +21,8 @@
           <td><%= user.dataValues.username %></td>
           <td><%= user.dataValues.password %></td>
           <td>
-            <a href="#" class="btn btn-xs btn-outline btn-accent mr-1">Edit</a>
-            <a href="#" class="btn btn-xs btn-outline btn-accent">Delete</a>
+            <button class="btn btn-xs btn-outline btn-accent mr-1">Edit</button>
+            <button class="btn btn-xs btn-outline btn-accent">Delete</button>
           </td>
         </tr>
         <% } %>
@@ -30,7 +30,7 @@
     </table>
   </div>
   <div class="mx-auto">
-    <a href="#" class="btn btn-accent mt-4 btn-sm">Add User</a>
+    <button class="btn btn-accent mt-4 btn-sm">Add User</button>
   </div>
 </main>
 

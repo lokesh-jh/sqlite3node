@@ -1,0 +1,16 @@
+<%- include("includes/head.ejs")%> <%- include("includes/navigation.ejs")%>
+
+<main class="container m-auto">
+  <h1 class="text-6xl">Add Book</h1>
+  <form action="/admin/addBook" method="POST">
+    <input type="text" name="title" placeholder="title"/>
+    <input type="text" name="cost" placeholder="cost"/>
+    <input type="text" name="author" placeholder="author"/>
+    <input type="text" name="genre" placeholder="genre"/>
+    <input type="text" name="publishdate" placeholder="pubishdate"/>
+    <input type="text" name="description" placeholder="description"/>
+    <button type="submit">Add Book</button>
+  </form>
+</main>
+
+<%- include("includes/footer.ejs")%>
