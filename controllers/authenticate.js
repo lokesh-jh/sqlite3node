@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const User = require("../models/user");
 const bcrypt = require("bcryptjs");
-const { validationResult } = require("express-validator");
+const {validationResult} = require("express-validator");
 
 exports.getLogin = (req, res) => {
   if (!req.session.messages) {
@@ -17,6 +17,15 @@ exports.getLogin = (req, res) => {
 exports.getRegister = (req, res) => {
   res.render("register", { msg: "" });
 };
+
+exports.getLogout = (req, res) => {
+  req.logout(function (err) {
+    if (err) {
+      return next(err);
+    }
+  }); // Passport.js method to log the user out
+  res.redirect("/login"); // Redirect to the login page
+}
 
 exports.postRegister = async (req, res) => {
   const { username, password, confirmpassword } = req.body;
@@ -46,11 +55,4 @@ exports.postRegister = async (req, res) => {
   }
 };
 
-exports.getLogout = (req, res) => {
-    req.logout(function (err) {
-      if (err) {
-        return next(err);
-      }
-    }); // Passport.js method to log the user out
-    res.redirect("/login"); // Redirect to the login page
-  }
+

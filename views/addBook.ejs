@@ -1,16 +1,20 @@
 <%- include("includes/head.ejs")%> <%- include("includes/navigation.ejs")%>
 
-<main class="container m-auto">
-  <h1 class="text-6xl">Add Book</h1>
-  <form action="/admin/addBook" method="POST">
-    <input type="text" name="title" placeholder="title"/>
-    <input type="text" name="cost" placeholder="cost"/>
-    <input type="text" name="author" placeholder="author"/>
-    <input type="text" name="genre" placeholder="genre"/>
-    <input type="text" name="publishdate" placeholder="pubishdate"/>
-    <input type="text" name="description" placeholder="description"/>
-    <button type="submit">Add Book</button>
-  </form>
+<main>
+  <div class="card w-1/3 bg-base-100 shadow-xl mx-auto">
+    <div class="card-body items-center text-center">
+      <h1 class="text-6xl">Add Book</h1>
+      <form action="/admin/addBook" method="POST" class="flex flex-col items-centre">
+        <input type="text" name="title" placeholder="title" class="input input-bordered input-accent w-full max-w-xs my-2" />
+        <input type="text" name="author" placeholder="author" class="input input-bordered input-accent w-full max-w-xs my-2" />
+        <input type="text" name="price" placeholder="price" class="input input-bordered input-accent w-full max-w-xs my-2" />
+        <input type="text" name="genre" placeholder="genre" class="input input-bordered input-accent w-full max-w-xs my-2" />
+        <input type="text" name="publishDate" placeholder="pubishDate" class="input input-bordered input-accent w-full max-w-xs my-2" />
+        <!-- <input type="text" name="description" placeholder="description" class="input input-bordered input-accent w-full max-w-xs my-2"/> -->
+        <button type="submit" class="btn btn-accent">Add Book</button>
+      </form>
+    </div>
+  </div>
 </main>
 
 <%- include("includes/footer.ejs")%>

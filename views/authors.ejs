@@ -8,18 +8,16 @@
         <tr>
           <th>S.No</th>
           <th>Name</th>
-          <th>email</th>
-          <th>Password</th>
-          <th>action</th>
+          <th>Address</th>
+          
         </tr>
       </thead>
       <tbody>
-        <% for (let user of userlist){ %>
+        <% for (let author of authorlist){ %>
         <tr>
           <th>1</th>
-          <td><%= user.dataValues.name %></td>
-          <td><%= user.dataValues.username %></td>
-          <td><%= user.dataValues.password %></td>
+          <td><%= author.dataValues.name %></td>
+          <td><%= author.dataValues.address %></td>          
           <td>
             <a href="#" class="btn btn-xs btn-outline btn-accent mr-1">Edit</a>
             <a href="#" class="btn btn-xs btn-outline btn-accent">Delete</a>
@@ -30,7 +28,7 @@
     </table>
   </div>
   <div class="mx-auto">
-    <a href="#" class="btn btn-accent mt-4 btn-sm">Add Author</a>
+    <a href="/admin/addAuthor" class="btn btn-accent mt-4 btn-sm">Add Author</a>
   </div>
 </main>
 

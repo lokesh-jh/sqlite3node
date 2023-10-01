@@ -1,5 +1,4 @@
 const express = require("express");
-const flash = require('express-flash');
 const app = express();
 const path = require("path");
 const bcrypt = require("bcryptjs");
@@ -9,8 +8,8 @@ const bodyParser = require("body-parser");
 //require routes
 const adminRoutes = require("./routes/admin");
 const registerRoutes = require("./routes/login");
-const pagesRoutes = require("./routes/pages");
-//const userRoutes = require("./routes/user");
+const shopRoutes = require("./routes/shop");
+const userRoutes = require("./routes/user");
 
 //view engines
 app.set("view engine", "ejs");
@@ -58,7 +57,7 @@ passport.deserializeUser(async(id, done) => {
 app.use(session({ secret: "your-secret-key", resave: false, saveUninitialized: false }));
 app.use(passport.initialize());
 app.use(passport.session());
-//app.use(flash());
+
 // end passport code
 
 // Middleware
@@ -73,33 +72,21 @@ function isAuthenticated(req, res, next) {
   res.redirect("/login");
 }
 
-// routing
-app.get("/",function (req, res) {    
-  res.render("home");
-} )
-app.use(pagesRoutes);
-app.use("/admin", isAuthenticated,adminRoutes);
-//app.use(isAuthenticated,userRoutes);
-app.use(registerRoutes);
+//login routes
 app.post(
   "/login",
-  passport.authenticate("local", { failureRedirect: "/login",failureMessage: true}),  
-    function (req, res) {    
+  passport.authenticate("local", { failureRedirect: "/register",failureMessage: true}),  
+    function (req, res) { 
+      console.log("hello")   
     res.redirect("/profile");
   }
 );
-app.get("/login", (req, res) => {  
-  if(!req.session.messages){
-    //console.log("logged out")
-    const message= ["you have been logged out"];
-  } else{
-       
-        console.log(req.session.messages);
-  }
- 
-  res.render("login",{message:[]});
-});
 
+// routes 
+app.use(shopRoutes);
+app.use(registerRoutes);
+app.use("/admin",adminRoutes);
+app.use(userRoutes);
 
 // page not found
 app.use((req, res) => {

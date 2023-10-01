@@ -9,7 +9,7 @@ const bodyParser = require("body-parser");
 //require routes
 const adminRoutes = require("./routes/admin");
 const registerRoutes = require("./routes/login");
-const pagesRoutes = require("./routes/pages");
+const pagesRoutes = require("./routes/shop");
 //const userRoutes = require("./routes/user");
 
 //view engines
@@ -100,6 +100,9 @@ app.get("/login", (req, res) => {
   res.render("login",{message:[]});
 });
 
+app.get("/profile", (req,res)=>{
+  res.render("profile")
+})
 
 // page not found
 app.use((req, res) => {

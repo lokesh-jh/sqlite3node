@@ -6,24 +6,38 @@ exports.getUsers = async(req, res) => {
   res.render("users", { userlist});
 };
 
-exports.getAddUser = (req, res) => {
-  res.render("adduser");
+exports.getDeleteUser = async(req, res) => {
+  console.log(req.params);
+  await User.destroy({
+    where: {
+      username: req.params.username
+    }
+  });
+  const userlist = await User.findAll();
+  res.render("users", {userlist});
 };
 
-exports.postAddUser = async (req, res) => {
-  await User.create(req.body);
-  res.send("user added");
-};
 
 exports.getProfile = (req, res) =>{      
   res.render("profile");
 }
 
-exports.getLogout = (req, res) => {
-  req.logout(function (err) {
-    if (err) {
-      return next(err);
-    }
-  }); // Passport.js method to log the user out
-  res.redirect("/login"); // Redirect to the login page
+exports.postUpdateProfile = (req, res) =>{      
+  res.render("profile");
 }
+
+exports.getCart = async(req, res) => {
+  userlist = await User.findAll();  
+  res.render("cart", { userlist});
+};
+exports.getAddtoCart = (req, res) =>{      
+  res.render("cart");
+}
+exports.getOrders = (req, res) =>{      
+  res.render("orders");}
+
+exports.getProducts = (req, res) =>{      
+  res.render("products");
+}
+
+

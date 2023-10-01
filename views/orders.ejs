@@ -1,6 +1,6 @@
 <%- include("includes/head.ejs")%> <%- include("includes/navigation.ejs")%>
 <main class="mx-auto w-3/4">
-  <h1 class="text-4xl m-6">All Users</h1>
+  <h1 class="text-4xl m-6">Orders</h1>
   <div class="overflow-x-auto">
     <table class="table table-zebra">
       <!-- head -->
@@ -10,7 +10,7 @@
           <th>Name</th>
           <th>email</th>
           <th>Password</th>
-          <th>action</th>
+          
         </tr>
       </thead>
       <tbody>
@@ -19,19 +19,13 @@
           <th>1</th>
           <td><%= user.dataValues.name %></td>
           <td><%= user.dataValues.username %></td>
-          <td><%= user.dataValues.password %></td>
-          <td>
-            <a href="#" class="btn btn-xs btn-outline btn-accent mr-1">Edit</a>
-            <a href="/admin/deleteUser/<%= user.dataValues.username %>" class="btn btn-xs btn-outline btn-accent">Delete</a>
-          </td>
+          <td><%= user.dataValues.password %></td>          
         </tr>
         <% } %>
       </tbody>
     </table>
   </div>
-  <div class="mx-auto">
-    <a href="#" class="btn btn-accent mt-4 btn-sm">Add User</a>
-  </div>
+  
 </main>
 
 <%- include("includes/footer.ejs")%>

@@ -7,22 +7,26 @@
       <thead>
         <tr>
           <th>S.No</th>
-          <th>Name</th>
-          <th>email</th>
-          <th>Password</th>
+          <th>title</th>
+          <th>author</th>
+          <th>price</th>
+          <th>genre</th>
+          <th>publish date</th>
           <th>action</th>
         </tr>
       </thead>
       <tbody>
-        <% for (let user of userlist){ %>
+        <% for (let book of booklist){ %>
         <tr>
           <th>1</th>
-          <td><%= user.dataValues.name %></td>
-          <td><%= user.dataValues.username %></td>
-          <td><%= user.dataValues.password %></td>
+          <td><%= book.dataValues.title %></td>
+          <td><%= book.dataValues.author %></td>
+          <td><%= book.dataValues.price %></td>
+          <td><%= book.dataValues.genre %></td>
+          <td><%= book.dataValues.publishDate %></td>
           <td>
             <a href="#" class="btn btn-xs btn-outline btn-accent mr-1">Edit</a>
-            <a href="#" class="btn btn-xs btn-outline btn-accent">Delete</a>
+            <a href="/admin/deleteBook/<%= book.dataValues.id %>" class="btn btn-xs btn-outline btn-accent">Delete</a>
           </td>
         </tr>
         <% } %>
@@ -30,7 +34,7 @@
     </table>
   </div>
   <div class="mx-auto">
-    <a href="#" class="btn btn-accent mt-4 btn-sm">Add Book</a>
+    <a href="/admin/addBook" class="btn btn-accent mt-4 btn-sm">Add Book</a>
   </div>
 </main>
 

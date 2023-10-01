@@ -1,7 +1,7 @@
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../database");
-class Author extends Model {}
-Author.init(
+class Genre extends Model {}
+Genre.init(
   {
     id: {
       allowNull: false,
@@ -9,17 +9,14 @@ Author.init(
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
     },
-    name: {
+    Name: {
       type: DataTypes.STRING,
-    },
-    address: {
-      type: DataTypes.STRING,
-    },
+    }
   },
   {
     sequelize,
-    modelName: "author",
+    modelName: "genre",
   }
 );
 
-module.exports = Author;
+module.exports = Genre;
