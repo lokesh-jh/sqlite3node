@@ -28,6 +28,9 @@ router.get("/deleteUser/:username",userController.getDeleteUser)
 router.get("/genres",genreController.getGenre)
 router.get("/addGenre",genreController.getAddGenre)
 router.post("/addGenre",genreController.postAddGenre)
+router.get("/updateGenre/:id",genreController.getUpdateGenre)
+router.post("/updateGenre/:id",genreController.postUpdateGenre)
+router.get("/deleteGenre/:id",genreController.getDeleteGenre)
 
 module.exports = router;
 

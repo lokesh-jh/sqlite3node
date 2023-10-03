@@ -9,7 +9,7 @@ Genre.init(
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
     },
-    Name: {
+    name: {
       type: DataTypes.STRING,
     }
   },

@@ -5,10 +5,22 @@
     <div class="card-body items-center text-center">
       <h1 class="text-6xl">Add Book</h1>
       <form action="/admin/addBook" method="POST" class="flex flex-col items-centre">
+        
         <input type="text" name="title" placeholder="title" class="input input-bordered input-accent w-full max-w-xs my-2" />
-        <input type="text" name="author" placeholder="author" class="input input-bordered input-accent w-full max-w-xs my-2" />
-        <input type="text" name="price" placeholder="price" class="input input-bordered input-accent w-full max-w-xs my-2" />
-        <input type="text" name="genre" placeholder="genre" class="input input-bordered input-accent w-full max-w-xs my-2" />
+        <select name="author" id="author" class="select select-accent w-full max-w-xs my-2">
+          <option disabled selected>Select Author</option>
+          <% for (let author of authorlist){ %>
+          <option value="<%= author.name %>"><%= author.name %></option>
+          <% } %>
+        </select>        
+        <input type="text" name="price" placeholder="price" class="select select-accent w-full max-w-xs my-2" />
+        <select name="genre" id="genre" class="input input-bordered input-accent w-full max-w-xs my-2">
+          <option disabled selected>Select Genre</option>
+          <% for (let genre of genrelist){ %>
+          <option value="<%= genre.name %>"><%= genre.name %></option>
+          <% } %>
+        </select>
+        <!-- <input type="text" name="genre" placeholder="genre" class="input input-bordered input-accent w-full max-w-xs my-2" /> -->
         <input type="text" name="publishDate" placeholder="pubishDate" class="input input-bordered input-accent w-full max-w-xs my-2" />
         <!-- <input type="text" name="description" placeholder="description" class="input input-bordered input-accent w-full max-w-xs my-2"/> -->
         <button type="submit" class="btn btn-accent">Add Book</button>

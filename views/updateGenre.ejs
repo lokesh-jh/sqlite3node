@@ -3,10 +3,10 @@
 <main>
   <div class="card w-1/3 bg-base-100 shadow-xl mx-auto">
     <div class="card-body items-center text-center">
-      <h1 class="text-6xl">Add Genre</h1>
-      <form action="/admin/addGenre" method="POST">
-        <input type="text" name="name" placeholder="genre" class="input input-bordered input-accent w-full max-w-xs my-2" />
-        <button type="submit" class="btn btn-accent">Add Genre</button>
+      <h1 class="text-6xl">Update Genre</h1>
+      <form action="/admin/updateGenre/<%= item.id %>" method="POST">
+        <input type="text" name="name" placeholder="genre" value= "<%= item.name%>" class="input input-bordered input-accent w-full max-w-xs my-2" />
+        <button type="submit" class="btn btn-accent">Update Genre</button>
         <a href="/admin/genres" class="btn btn-accent">Cancel</a>
       </form>
     </div>

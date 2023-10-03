@@ -1,12 +1,16 @@
 const Book = require("../models/book");
+const Genre = require("../models/genre");
+const Author = require("../models/author");
 
 exports.getBooks = async(req, res) => {
   const booklist = await Book.findAll();
   console.log(booklist);  
   res.render("books", { booklist});  
 };
-exports.getAddBook = (req, res) => {
-  res.render("addBook");
+exports.getAddBook = async(req, res) => {
+  const genrelist= await Genre.findAll();
+  const authorlist= await Author.findAll();
+  res.render("addBook", {genrelist,authorlist});
 };
 exports.postAddBook = async(req, res) => {
   await Book.create(req.body);
