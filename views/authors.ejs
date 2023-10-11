@@ -9,21 +9,22 @@
           <th>S.No</th>
           <th>Name</th>
           <th>Address</th>
+          <th>Actions</th>
           
         </tr>
       </thead>
       <tbody>
-        <% for (let author of authorlist){ %>
+        <% authorlist.forEach((value,index)=>{ %>
         <tr>
-          <th>1</th>
-          <td><%= author.dataValues.name %></td>
-          <td><%= author.dataValues.address %></td>          
+          <th><%= index+1 %></th>
+          <td><%= value.name %></td>
+          <td><%= value.address %></td>          
           <td>
-            <a href="#" class="btn btn-xs btn-outline btn-accent mr-1">Edit</a>
-            <a href="#" class="btn btn-xs btn-outline btn-accent">Delete</a>
+            <a href="/admin/updateAuthor/<%= value.id %>" class="btn btn-xs btn-outline btn-accent mr-1">Edit</a>
+            <a href="/admin/deleteAuthor/<%= value.id %>" class="btn btn-xs btn-outline btn-accent">Delete</a>
           </td>
         </tr>
-        <% } %>
+        <% }) %>
       </tbody>
     </table>
   </div>

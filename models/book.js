@@ -13,7 +13,7 @@ Book.init(
       type: DataTypes.STRING
     },
     publishDate: {
-      type: DataTypes.STRING,      
+      type: DataTypes.DATEONLY,      
     },
     price: {
         type: DataTypes.INTEGER,      

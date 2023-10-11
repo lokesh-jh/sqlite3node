@@ -16,20 +16,20 @@
         </tr>
       </thead>
       <tbody>
-        <% for (let book of booklist){ %>
+        <% booklist.forEach((value,index)=>{ %>
         <tr>
-          <th>1</th>
-          <td><%= book.dataValues.title %></td>
-          <td><%= book.dataValues.author %></td>
-          <td><%= book.dataValues.price %></td>
-          <td><%= book.dataValues.genre %></td>
-          <td><%= book.dataValues.publishDate %></td>
+          <th><%= index+1 %></th>
+          <td><%= value.title %></td>
+          <td><%= value.author %></td>
+          <td><%= value.price %></td>
+          <td><%= value.genre %></td>
+          <td><%= value.publishDate %></td>
           <td>
             <a href="#" class="btn btn-xs btn-outline btn-accent mr-1">Edit</a>
-            <a href="/admin/deleteBook/<%= book.dataValues.id %>" class="btn btn-xs btn-outline btn-accent">Delete</a>
+            <a href="/admin/deleteBook/<%= value.id %>" class="btn btn-xs btn-outline btn-accent">Delete</a>
           </td>
         </tr>
-        <% } %>
+        <% }) %>
       </tbody>
     </table>
   </div>

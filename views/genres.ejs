@@ -12,16 +12,16 @@
         </tr>
       </thead>
       <tbody>
-        <% for (let genre of genrelist){ %>
+        <% genrelist.forEach((value,index)=>{ %>
         <tr>
-          <th>1</th>
-          <td><%= genre.dataValues.name %></td>          
+          <th><%= index+1 %></th>
+          <td><%= value.name %></td>          
           <td>
-            <a href="/admin/updateGenre/<%= genre.dataValues.id %>" class="btn btn-xs btn-outline btn-accent mr-1">Edit</a>
-            <a href="/admin/deleteGenre/<%= genre.dataValues.id %>" class="btn btn-xs btn-outline btn-accent">Delete</a>
+            <a href="/admin/updateGenre/<%= value.id %>" class="btn btn-xs btn-outline btn-accent mr-1">Edit</a>
+            <a href="/admin/deleteGenre/<%= value.id %>" class="btn btn-xs btn-outline btn-accent">Delete</a>
           </td>
         </tr>
-        <% } %>
+        <% })%>
       </tbody>
     </table>
   </div>

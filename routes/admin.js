@@ -17,8 +17,9 @@ router.get("/deleteBook/:id",bookController.getDeleteBook);
 router.get("/authors",authorController.getAuthors);
 router.get("/addAuthor",authorController.getAddAuthor);
 router.post("/addAuthor",authorController.postAddAuthor);
-router.get("/updateAuthor",authorController.getUpdateAuthor);
-router.get("/deleteAuthor",authorController.getDeleteAuthor);
+router.get("/updateAuthor/:id",authorController.getUpdateAuthor);
+router.post("/updateAuthor/:id",authorController.postUpdateAuthor);
+router.get("/deleteAuthor/:id",authorController.getDeleteAuthor);
 
 //user related routes from usercontroller
 router.get("/users",userController.getUsers)

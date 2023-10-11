@@ -1,0 +1,27 @@
+<%- include("includes/head.ejs")%> <%- include("includes/navigation.ejs")%>
+<main>
+  <div class="card w-1/3 bg-base-100 shadow-xl mx-auto">
+    <div class="card-body items-center text-center">
+<h1 class="text-4xl m-6">Add Author</h1>
+      <form action="/admin/updateAuthor/<%= item.id %>"  method="POST" class="flex flex-col items-centre">
+        <input
+          type="text"
+          placeholder="Name"
+          name="name"
+          value = "<%= item.name %>"
+          class="input input-bordered input-accent w-full max-w-xs my-4"
+        />
+        <input
+          type="text"
+          placeholder="Address"
+          name="address"
+          value = "<%= item.address %>"
+          class="input input-bordered input-accent w-full max-w-xs my-4"
+        />
+        <button type="submit" class="btn btn-accent">Update Author</button>
+      </form>    
+    </div>
+  </div>
+</main>
+
+<%- include("includes/footer.ejs")%>
