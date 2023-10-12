@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const userController = require("../controllers/user")
 const authenticateController = require("../controllers/authenticate")
+const {body} = require("express-validator");
 
 router.get("/logout",authenticateController.getLogout)
 router.get("/profile",userController.getProfile)

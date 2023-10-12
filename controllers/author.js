@@ -1,17 +1,24 @@
 const Author = require("../models/author");
 const User = require("../models/user");
+const {validationResult} = require("express-validator");
 
 exports.getAuthors = async(req, res) => {
   const authorlist = await Author.findAll();
-  console.log(authorlist)  
+  //console.log(authorlist)  
   res.render("authors", { authorlist});  
 };
 
 exports.getAddAuthor = (req, res) => {
-  res.render("addAuthor");
+  res.render("addAuthor",{ validationError:[] });
 };
 
 exports.postAddAuthor = async(req, res) => {
+  const result = validationResult(req);  
+  if (!result.isEmpty()) {
+    const validationError = result.array();
+    console.log(validationError)
+    return res.render("addAuthor", { validationError});
+  }  
   await Author.create(req.body);
   res.redirect("/admin/authors")
 };

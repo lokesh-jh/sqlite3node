@@ -18,8 +18,13 @@
         />
         <button type="submit" class="btn btn-accent">Add Author</button>
       </form>    
-    </div>
+    </div>    
   </div>
+  <% if(validationError){ %>
+    <% Object.values(validationError).forEach((error)=>{ %>
+    <p class="w-1/4 mx-auto text-center bg-warning border rounded-md text-black mt-2"><%= error.msg %></p>
+    <% }) %>
+    <% } %>
 </main>
 
 <%- include("includes/footer.ejs")%>

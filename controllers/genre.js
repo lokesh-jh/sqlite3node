@@ -14,7 +14,7 @@ exports.getUpdateGenre = async(req, res) => {
 };
 
 exports.postUpdateGenre = async(req, res) => {
-  console.log(req.body.name, req.params.id);
+  //console.log(req.body.name, req.params.id);
   await Genre.update({name:req.body.name }, {
     where: {
       id:req.params.id

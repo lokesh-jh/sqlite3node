@@ -5,6 +5,7 @@ const bcrypt = require("bcryptjs");
 const sequelize = require("./database");
 const bodyParser = require("body-parser");
 
+
 //require routes
 const adminRoutes = require("./routes/admin");
 const registerRoutes = require("./routes/login");
@@ -22,21 +23,23 @@ const session = require("express-session");
 const LocalStrategy = require("passport-local").Strategy;
 const User = require("./models/user");
 passport.use(
-  new LocalStrategy(async function (username,password, done) {
-    
+  new LocalStrategy(async function (username, password, done) {
     try {
       const user = await User.findOne({ where: { username: username } });
 
       if (!user) {
-        return done(null, false,{
-          message: "user does not exist"
-      });
+        return done(null, false, {
+          message: "user does not exist",
+        });
       }
-      const matchpassword = await (bcrypt.compare(password,user.dataValues.password));
+      const matchpassword = await bcrypt.compare(
+        password,
+        user.dataValues.password
+      );
       if (!matchpassword) {
-        return done(null, false,{
-          message: "incorrect password"
-      });
+        return done(null, false, {
+          message: "incorrect password",
+        });
       }
       return done(null, user);
     } catch (error) {
@@ -46,15 +49,21 @@ passport.use(
   })
 );
 // Serialize and deserialize user for session management
-passport.serializeUser((user, done) => {  
+passport.serializeUser((user, done) => {
   done(null, user.id);
 });
-passport.deserializeUser(async(id, done) => {
-  const user = await User.findByPk(id);    
-    done(null, user);
+passport.deserializeUser(async (id, done) => {
+  const user = await User.findByPk(id);
+  done(null, user);
 });
 
-app.use(session({ secret: "your-secret-key", resave: false, saveUninitialized: false }));
+app.use(
+  session({
+    secret: "your-secret-key",
+    resave: false,
+    saveUninitialized: false,
+  })
+);
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -72,20 +81,23 @@ function isAuthenticated(req, res, next) {
   res.redirect("/login");
 }
 
+
 //login routes
+//
+
 app.post(
   "/login",
-  passport.authenticate("local", { failureRedirect: "/register",failureMessage: true}),  
-    function (req, res) { 
-      console.log("hello")   
+  passport.authenticate("local", { failureRedirect: "/register",failureMessage: true}),
+    function (req, res) {
+    console.log("hello")
     res.redirect("/profile");
   }
 );
 
-// routes 
+// routes
 app.use(shopRoutes);
 app.use(registerRoutes);
-app.use("/admin",adminRoutes);
+app.use("/admin", adminRoutes);
 app.use(userRoutes);
 
 // page not found

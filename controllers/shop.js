@@ -4,7 +4,7 @@ const Book = require("../models/book");
 
 exports.getHome = async(req, res) => {
   const booklist = await Book.findAll();
-  console.log(booklist);  
+  //console.log(booklist);  
   res.render("home", { booklist});  
 };
   

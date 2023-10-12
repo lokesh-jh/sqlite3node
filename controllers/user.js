@@ -2,12 +2,12 @@ const User = require("../models/user");
 
 exports.getUsers = async(req, res) => {
   userlist = await User.findAll();
-  console.log(userlist[0]);
+  //console.log(userlist[0]);
   res.render("users", { userlist});
 };
 
 exports.getDeleteUser = async(req, res) => {
-  console.log(req.params);
+  //console.log(req.params);
   await User.destroy({
     where: {
       username: req.params.username
@@ -39,5 +39,7 @@ exports.getOrders = (req, res) =>{
 exports.getProducts = (req, res) =>{      
   res.render("products");
 }
+
+
 
 
