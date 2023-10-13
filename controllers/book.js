@@ -3,10 +3,9 @@ const Genre = require("../models/genre");
 const Author = require("../models/author");
 const {validationResult} = require("express-validator");
 
-exports.getBooks = async(req, res) => {
-  const booklist = await Book.findAll();
-  //console.log(booklist);  
-  res.render("books", { booklist});  
+exports.getBooks = async(req, res) => {  
+  const booklist = await Book.findAll();  
+  res.render("books", { booklist, name:req.dataValues.username});  
 };
 exports.getAddBook = async(req, res) => {
   const genrelist= await Genre.findAll();

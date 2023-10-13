@@ -1,3 +1,4 @@
+
 <nav class="border-b border-gray-700 z-10">
   <div class="navbar bg-base-100">
     <div class="navbar-start">
@@ -46,18 +47,22 @@
           <details>
             <summary>Admin</summary>
             <ul class="p-2">
+              
               <li><a>Dashboard</a></li>
               <li><a href="/admin/books">View Books</a></li>
               <li ><a href="/admin/authors">View Authors</a></li>
               <li><a href="/admin/users">View Users</a></li>
               <li><a href="/admin/genres">View Genre</a></li>
               <li><a href="/admin/roles">View Roles</a></li>
+             
             </ul>
           </details>
         </li>
+       
         <li><a href="/cart">View Cart</a></li>
         <li><a href="/profile">View Profile</a></li>
         <li><a href="/orders">View Orders</a></li>
+        
       </ul>
     </div>
 
@@ -65,6 +70,8 @@
       <a href="/login" class="btn border-gray-700">Login</a>
       <a href="/register" class="btn border-gray-700 mx-2">Register</a>
       <a href="/logout" class="btn border-gray-700">Logout</a>
+      <a href="#" class="btn border-gray-700"><%= logged %></a>
+      
     </div>
   </div>
 </nav>

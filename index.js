@@ -97,7 +97,7 @@ app.post(
 // routes
 app.use(shopRoutes);
 app.use(registerRoutes);
-app.use("/admin", adminRoutes);
+app.use("/admin",isAuthenticated, adminRoutes);
 app.use(userRoutes);
 
 // page not found
