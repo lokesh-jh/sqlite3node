@@ -1,0 +1,24 @@
+<%- include("includes/head.ejs")%> <%- include("includes/navigation.ejs")%>
+<main>
+  <div class="card w-1/3 bg-base-100 shadow-xl mx-auto">
+    <div class="card-body items-center text-center">
+<h1 class="text-4xl m-6">Add Role</h1>
+      <form action="/admin/addRole" method="POST" class="flex flex-col items-centre">
+        <input
+          type="text"
+          placeholder="Role"
+          name="role"
+          class="input input-bordered input-accent w-full max-w-xs my-4"
+        />        
+        <button type="submit" class="btn btn-accent">Add Role</button>
+      </form>    
+    </div>    
+  </div>
+  <% if(validationError){ %>
+    <% Object.values(validationError).forEach((error)=>{ %>
+    <p class="w-1/4 mx-auto text-center bg-warning border rounded-md text-black mt-2"><%= error.msg %></p>
+    <% }) %>
+    <% } %>
+</main>
+
+<%- include("includes/footer.ejs")%>

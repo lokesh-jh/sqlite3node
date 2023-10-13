@@ -4,6 +4,7 @@ const userController = require("../controllers/user")
 const bookController = require("../controllers/book")
 const authorController = require("../controllers/author")
 const genreController = require("../controllers/genre")
+const roleController = require("../controllers/role")
 const {body} = require("express-validator");
 
 //book related routes from bookcontroller
@@ -48,6 +49,18 @@ router.post("/addGenre",genreController.postAddGenre)
 router.get("/updateGenre/:id",genreController.getUpdateGenre)
 router.post("/updateGenre/:id",genreController.postUpdateGenre)
 router.get("/deleteGenre/:id",genreController.getDeleteGenre)
+
+//genre related routes from genrecontroller
+router.get("/roles",roleController.getRole)
+router.get("/addRole",roleController.getAddRole)
+
+router.post("/addRole",
+body("role").notEmpty().withMessage('role can not be blank'),
+roleController.postAddRole);
+
+router.get("/updateRole/:id",roleController.getUpdateRole)
+router.post("/updateRole/:id",roleController.postUpdateRole)
+router.get("/deleteRole/:id",roleController.getDeleteRole)
 
 module.exports = router;
 

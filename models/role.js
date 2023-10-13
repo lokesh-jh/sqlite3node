@@ -9,7 +9,7 @@ Role.init(
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
     },
-    name: {
+    role: {
       type: DataTypes.STRING,
     }
   },
