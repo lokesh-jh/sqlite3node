@@ -11,11 +11,11 @@ exports.getLogin = (req, res) => {
   } else {
     console.log(req.session.messages);
   }
-  res.render("login", { message: [],msg:"" });
+  res.render("login", { message: [],msg:"",loggedin:req.isAuthenticated() });
 };
 
 exports.getRegister = (req, res) => {
-  res.render("register", { validationError:[] });
+  res.render("register", { validationError:[],loggedin:req.isAuthenticated() });
 };
 
 // exports.postRegister = async(req, res) => {
@@ -46,16 +46,16 @@ exports.postRegister = async (req, res) => {
   console.log(result.errors);
   if (!result.isEmpty()) {
     const valerr = result.errors;
-    return res.render("register", { msg: valerr[0].msg });
+    return res.render("register", { msg: valerr[0].msg,loggedin:req.isAuthenticated() });
   }
   const hashpassword = await bcrypt.hash(password, 8);
   req.body.password = hashpassword;
   try {
     const user = await User.findOne({ where: { username: username } });
     if (user) {
-      return res.render("register", { msg: "user exists" });
+      return res.render("register", { msg: "user exists",loggedin:req.isAuthenticated() });
     } else if (password !== confirmpassword) {
-      return res.render("register", { msg: "passwords dont match" });
+      return res.render("register", { msg: "passwords dont match",loggedin:req.isAuthenticated() });
     }
   } catch (err) {
     console.log(err);

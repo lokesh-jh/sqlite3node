@@ -3,13 +3,12 @@ const User = require("../models/user");
 const {validationResult} = require("express-validator");
 
 exports.getAuthors = async(req, res) => {
-  const authorlist = await Author.findAll();
-  //console.log(authorlist)  
-  res.render("authors", { authorlist});  
+  const authorlist = await Author.findAll();   
+  res.render("authors", { authorlist,loggedin:req.isAuthenticated()});  
 };
 
 exports.getAddAuthor = (req, res) => {
-  res.render("addAuthor",{ validationError:[] });
+  res.render("addAuthor",{ validationError:[],loggedin:req.query.loggedin });
 };
 
 exports.postAddAuthor = async(req, res) => {
@@ -17,15 +16,15 @@ exports.postAddAuthor = async(req, res) => {
   if (!result.isEmpty()) {
     const validationError = result.array();
     console.log(validationError)
-    return res.render("addAuthor", { validationError});
+    return res.render("addAuthor", { validationError,loggedin:req.isAuthenticated()});
   }  
   await Author.create(req.body);
-  res.redirect("/admin/authors")
+  res.redirect("/admin/authors?loggedin=true")
 };
 
 exports.getUpdateAuthor = async(req, res) => {
   const item = await Author.findByPk(req.params.id); 
-  res.render("updateAuthor",{item});
+  res.render("updateAuthor",{item,loggedin:req.query.loggedin});
 };
 
 exports.postUpdateAuthor = async(req, res) => {  
@@ -35,7 +34,7 @@ exports.postUpdateAuthor = async(req, res) => {
     }
   });  
   const authorlist = await Author.findAll(); 
-  res.render("authors",{authorlist});
+  res.render("authors",{authorlist,loggedin:req.isAuthenticated()});
 };
 
 exports.getDeleteAuthor = async(req, res) => {
@@ -45,6 +44,6 @@ exports.getDeleteAuthor = async(req, res) => {
     }
   });
   const authorlist = await Author.findAll();
-  res.render("authors", {authorlist});
+  res.render("authors", {authorlist,loggedin:req.query.loggedin});
   };
 

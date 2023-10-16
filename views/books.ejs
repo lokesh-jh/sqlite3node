@@ -1,4 +1,4 @@
-<%- include("includes/head.ejs")%> <%- include("includes/navigation.ejs")%>
+<%- include("includes/head.ejs")%> <%- include("includes/navigation.ejs",{loggedin})%>
 <main class="mx-auto w-3/4">
   <h1 class="text-4xl m-6">All Books</h1>
   <div class="overflow-x-auto">
@@ -26,7 +26,7 @@
           <td><%= value.publishDate %></td>
           <td>
             <a href="#" class="btn btn-xs btn-outline btn-accent mr-1">Edit</a>
-            <a href="/admin/deleteBook/<%= value.id %>" class="btn btn-xs btn-outline btn-accent">Delete</a>
+            <a href="/admin/deleteBook/<%= value.id%>?loggedin=true " class="btn btn-xs btn-outline btn-accent">Delete</a>
           </td>
         </tr>
         <% }) %>
@@ -34,7 +34,7 @@
     </table>
   </div>
   <div class="mx-auto">
-    <a href="/admin/addBook" class="btn btn-accent mt-4 btn-sm">Add Book</a>
+    <a href="/admin/addBook?loggedin=true" class="btn btn-accent mt-4 btn-sm">Add Book</a>
   </div>
 </main>
 

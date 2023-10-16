@@ -90,7 +90,7 @@ app.post(
   passport.authenticate("local", { failureRedirect: "/register",failureMessage: true}),
     function (req, res) {
     console.log("hello")
-    res.redirect("/profile");
+    res.render("profile",{loggedin:req.isAuthenticated()});
   }
 );
 
@@ -98,7 +98,7 @@ app.post(
 app.use(shopRoutes);
 app.use(registerRoutes);
 app.use("/admin",isAuthenticated, adminRoutes);
-app.use(userRoutes);
+app.use(isAuthenticated,userRoutes);
 
 // page not found
 app.use((req, res) => {

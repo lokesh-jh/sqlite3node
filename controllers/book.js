@@ -5,12 +5,12 @@ const {validationResult} = require("express-validator");
 
 exports.getBooks = async(req, res) => {  
   const booklist = await Book.findAll();  
-  res.render("books", { booklist, name:req.dataValues.username});  
+  res.render("books", { booklist, loggedin:req.isAuthenticated()});  
 };
 exports.getAddBook = async(req, res) => {
   const genrelist= await Genre.findAll();
   const authorlist= await Author.findAll();
-  res.render("addBook", {genrelist,authorlist,validationError:[]});
+  res.render("addBook", {genrelist,authorlist,validationError:[],loggedin:req.query.loggedin});
 };
 exports.postAddBook = async(req, res) => {
   const result = validationResult(req);
@@ -39,5 +39,5 @@ exports.getDeleteBook = async(req, res) => {
     }
   });
   const booklist = await Book.findAll();
-  res.render("books", {booklist});
+  res.render("books", {booklist,loggedin:req.query.loggedin});
 };

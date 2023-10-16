@@ -3,8 +3,6 @@ const app = express();
 const Book = require("../models/book");
 
 exports.getHome = async (req, res) => {
-  const booklist = await Book.findAll();
-  const loggedin= req.isAuthenticated();
-  console.log(loggedin); 
-  res.render("home", { booklist });
+  const booklist = await Book.findAll();   
+  res.render("home", { booklist,loggedin:req.isAuthenticated()});
 };

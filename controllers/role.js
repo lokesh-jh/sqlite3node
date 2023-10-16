@@ -3,15 +3,15 @@ const {validationResult} = require("express-validator");
 
 exports.getRole = async(req, res) => {
   rolelist = await Role.findAll();  
-  res.render("roles", {rolelist});  
+  res.render("roles", {rolelist,loggedin:req.isAuthenticated()});  
 };
 exports.getAddRole = (req, res) => {
-  res.render("addRole",{ validationError:[] });
+  res.render("addRole",{ validationError:[],loggedin:req.query.loggedin });
 };
 
 exports.getUpdateRole = async(req, res) => {
   const item = await Role.findByPk(req.params.id); 
-  res.render("updateRole",{item});
+  res.render("updateRole",{item,loggedin:req.query.loggedin});
 };
 
 exports.postUpdateRole = async(req, res) => {  
@@ -22,7 +22,7 @@ exports.postUpdateRole = async(req, res) => {
   });
 
   const rolelist = await Role.findAll(); 
-  res.render("roles",{rolelist});
+  res.render("roles",{rolelist,loggedin:req.isAuthenticated()});
 };
 
 exports.postAddRole = async(req, res) => {
@@ -30,10 +30,10 @@ exports.postAddRole = async(req, res) => {
     if (!result.isEmpty()) {
       const validationError = result.array();
       console.log(validationError)
-      return res.render("addRole", {validationError});
+      return res.render("addRole", {validationError,loggedin:req.isAuthenticated()});
     }  
     await Role.create(req.body);
-    res.redirect("/admin/roles")
+    res.redirect("/admin/roles?loggedin=true")
   };
 
 exports.getDeleteRole = async(req, res) => {
@@ -43,5 +43,5 @@ exports.getDeleteRole = async(req, res) => {
   }
 });
 const rolelist = await Role.findAll();
-res.render("roles", {rolelist});
+res.render("roles", {rolelist,loggedin:req.query.isloggedin});
 };

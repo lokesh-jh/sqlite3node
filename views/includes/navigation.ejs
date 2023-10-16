@@ -25,6 +25,7 @@
         >
           <li><a href="/">Home</a></li>
           <li>
+            <% if (loggedin){ %>
             <a>Admin</a>
             <ul class="p-2">
               <li><a>Dashboard</a></li>
@@ -34,6 +35,7 @@
               <li><a>View Users</a></li>
             </ul>
           </li>
+          <%}%>
           <li><a>View Cart</a></li>
           <li><a>View Profile</a></li>
         </ul>
@@ -43,8 +45,10 @@
     <div class="navbar-center z-[5] hidden lg:flex">
       <ul class="menu menu-horizontal px-1">
         <li><a href="/">Home</a></li>
+        <% if (loggedin){ %>
         <li tabindex="0">
           <details>
+            
             <summary>Admin</summary>
             <ul class="p-2">
               
@@ -56,21 +60,27 @@
               <li><a href="/admin/roles">View Roles</a></li>
              
             </ul>
+            
           </details>
         </li>
-       
+        <%}%>
+        <% if (loggedin){ %>
         <li><a href="/cart">View Cart</a></li>
         <li><a href="/profile">View Profile</a></li>
         <li><a href="/orders">View Orders</a></li>
-        
+        <%}%>
       </ul>
     </div>
 
     <div class="navbar-end">
+      <% if (!loggedin){ %>
       <a href="/login" class="btn border-gray-700">Login</a>
       <a href="/register" class="btn border-gray-700 mx-2">Register</a>
+      <%}%>
+      <% if (loggedin){ %>
       <a href="/logout" class="btn border-gray-700">Logout</a>
-      <a href="#" class="btn border-gray-700"><%= logged %></a>
+      <%}%>
+      <a href="#" class="btn border-gray-700"><%= loggedin %></a>
       
     </div>
   </div>

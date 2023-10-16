@@ -1,4 +1,4 @@
-<%- include("includes/head.ejs")%> <%- include("includes/navigation.ejs")%>
+<%- include("includes/head.ejs")%> <%- include("includes/navigation.ejs",{loggedin})%>
 <main class="mx-auto w-3/4">
   <h1 class="text-4xl m-6">All Authors</h1>
   <div class="overflow-x-auto">
@@ -20,8 +20,8 @@
           <td><%= value.name %></td>
           <td><%= value.address %></td>          
           <td>
-            <a href="/admin/updateAuthor/<%= value.id %>" class="btn btn-xs btn-outline btn-accent mr-1">Edit</a>
-            <a href="/admin/deleteAuthor/<%= value.id %>" class="btn btn-xs btn-outline btn-accent">Delete</a>
+            <a href="/admin/updateAuthor/<%= value.id %>?loggedin=true" class="btn btn-xs btn-outline btn-accent mr-1">Edit</a>
+            <a href="/admin/deleteAuthor/<%= value.id %>?loggedin=true" class="btn btn-xs btn-outline btn-accent">Delete</a>
           </td>
         </tr>
         <% }) %>
@@ -29,7 +29,7 @@
     </table>
   </div>
   <div class="mx-auto">
-    <a href="/admin/addAuthor" class="btn btn-accent mt-4 btn-sm">Add Author</a>
+    <a href="/admin/addAuthor?loggedin=true" class="btn btn-accent mt-4 btn-sm">Add Author</a>
   </div>
 </main>
 
