@@ -20,7 +20,6 @@ body("publishDate").isDate(),
 body("publishDate").notEmpty().withMessage('Publish date can not be blank'),
 body("publishDate").isBefore(new Date().toISOString().split('T')[0]).withMessage('Publish date must be before today'),
 bookController.postAddBook);
-
 router.get("/updateBook",bookController.getUpdateBook);
 router.post("/updateBook",bookController.postUpdateBook);
 router.get("/deleteBook/:id",bookController.getDeleteBook);

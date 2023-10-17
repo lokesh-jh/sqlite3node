@@ -21,10 +21,12 @@
         <p>Author :<%= value.author %></p>
         <p>Publish Date: <%= value.publishDate %></p>
         <p>Price :<%= value.price %></p>
+        <% if(loggedin){ %>
         <div class="card-actions justify-end">
           <div class="badge badge-outline">Buy</div>
-          <div class="badge badge-outline">Add to Cart</div>
+          <div href="/addToCart/<%= value.id%>?loggedin=true " class="badge badge-outline">Add to Cart</div>
         </div>
+        <% } %>
       </div>
     </div>
   

@@ -4,6 +4,8 @@ const path = require("path");
 const bcrypt = require("bcryptjs");
 const sequelize = require("./database");
 const bodyParser = require("body-parser");
+const multer = require('multer');
+const {body} = require("express-validator");
 
 
 //require routes
@@ -16,6 +18,25 @@ const userRoutes = require("./routes/user");
 app.set("view engine", "ejs");
 app.set("views", "views");
 const { start } = require("repl");
+
+// multercode
+const fileFilter = (req, file, cb) => {
+  // Define your criteria for accepting or rejecting files
+  if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') {
+    cb(null, true); // Accept the file
+  } else {
+    cb(null, false);
+  }
+};
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, 'uploads/'); // Set the destination folder for uploaded files
+  },
+  filename: (req, file, cb) => {
+    const timestamp = Date.now();
+    cb(null, `${timestamp}-${file.originalname}`); // Set the filename to the original name of the file
+  },
+});
 
 // passport code
 const passport = require("passport");
@@ -72,8 +93,8 @@ app.use(passport.session());
 // Middleware
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(multer({storage:storage}).single("image"));
 app.use(express.static(path.join(__dirname, "public")));
-
 function isAuthenticated(req, res, next) {
   if (req.isAuthenticated()) {
     return next();

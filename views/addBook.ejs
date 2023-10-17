@@ -8,11 +8,18 @@
         action="/admin/addBook"
         method="POST"
         class="flex flex-col items-centre"
+        enctype="multipart/form-data"
       >
         <input
           type="text"
           name="title"
           placeholder="title"
+          class="input input-bordered input-accent w-full max-w-xs my-2"
+        />
+        <input
+          type="file"
+          name="image"
+          placeholder="select image"
           class="input input-bordered input-accent w-full max-w-xs my-2"
         />
 
@@ -61,6 +68,11 @@
     <p class="w-1/4 mx-auto text-center bg-warning border rounded-md text-black mt-2"><%= error.msg %></p>
     <% }) %>
     <% } %>
+
+    <% if(fileError){ %>      
+      <p class="w-1/4 mx-auto text-center bg-warning border rounded-md text-black mt-2"><%= fileError %></p>     
+      <% } %>
+    
 </main>
 
 <%- include("includes/footer.ejs")%>
